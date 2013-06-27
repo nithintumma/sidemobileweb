@@ -25,6 +25,7 @@ var APP = (function($, window, document, undefined) {
       tip,
       number,
       page_picker,
+      userId,
       template;
 
   // Private variables used as "constants".
@@ -59,7 +60,7 @@ var APP = (function($, window, document, undefined) {
         list = $('#list');
         loading = $('#loading');
         error = $('#error');
-        
+
         markup = $('#_template-list-item').html().replace(/\s\s+/g, '');
         template = Handlebars.compile(markup);
         tip = $('#tip');
@@ -157,10 +158,15 @@ var APP = (function($, window, document, undefined) {
       },
       // APP.util.load_from_api
       load_from_api: function() {
-        var url_key = base + number;
+
+        // get the list of questions
+        // when complete, set the global array
+        // call a function to update the DOM
+
+        var url_key = base + userId;
         var time_key = 'time_' + number;
         var time_now = Date.now();
-
+        
         list.html('');
         error.hide();
         loading.show();
